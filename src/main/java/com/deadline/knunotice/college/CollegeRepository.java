@@ -1,4 +1,4 @@
-package com.deadline.knunotice.colleage;
+package com.deadline.knunotice.college;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
