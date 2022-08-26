@@ -1,7 +1,7 @@
 package com.deadline.knunotice.major;
 
 import com.deadline.knunotice.BasicEntity;
-import com.deadline.knunotice.colleage.CollegeToMajor;
+import com.deadline.knunotice.college.College;
 import com.deadline.knunotice.notice.Notice;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,10 +23,16 @@ public class Major extends BasicEntity {
     @Column(length = 50, nullable = false)
     private String name;
 
+    @ManyToOne
+    private College college;
+
     @OneToMany(mappedBy = "major")
     private List<Notice> notices;
 
-    @OneToMany(mappedBy = "college")
-    private List<CollegeToMajor> colleges;
+    public MajorResponseDTO toDto() {
+        return MajorResponseDTO.builder()
+                .name(name)
+                .build();
+    }
 
 }
