@@ -2,9 +2,11 @@ package com.deadline.knunotice.notice;
 
 import com.deadline.knunotice.BasicEntity;
 import com.deadline.knunotice.major.Major;
+import com.deadline.knunotice.member.MemberToNotice;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Date;
 
 @Getter
@@ -26,22 +28,17 @@ public class Notice extends BasicEntity {
     @Column(nullable = false)
     private Date createdDate;
 
-    @Column(nullable = false)
-    private Boolean isPin;
-
-    @Column(nullable = false)
-    private Boolean isBookmark;
-
     @ManyToOne
     private Major major;
+
+    @OneToMany(mappedBy = "notice", fetch = FetchType.EAGER)
+    private List<MemberToNotice> notices;
 
     public NoticeResponseDTO toDto() {
         return NoticeResponseDTO.builder()
                 .id(id)
                 .title(title)
                 .url(url)
-                .isBookmark(isBookmark)
-                .isPin(isPin)
                 .build();
     }
 
