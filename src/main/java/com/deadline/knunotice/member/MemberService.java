@@ -1,5 +1,8 @@
 package com.deadline.knunotice.member;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+
 public interface MemberService {
 
     Member findMemberByUsername(String username);
@@ -11,5 +14,7 @@ public interface MemberService {
     MemberAuthentication signUp(SignUpDTO signUpDTO);
 
     Member findMemberByEmail(String email);
+
+    void save(TokenRequestDTO idToken) throws GeneralSecurityException, IOException;
 
 }

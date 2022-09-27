@@ -6,7 +6,6 @@ plugins {
 
 group = 'com.deadline'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
 
 repositories {
     mavenCentral()
@@ -30,6 +29,8 @@ dependencies {
 
     implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.11'
     runtimeOnly 'com.h2database:h2'
+
+    implementation 'com.google.api-client:google-api-client:2.0.0'
 
 }
 

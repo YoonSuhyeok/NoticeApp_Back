@@ -6,6 +6,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.List;
 
+import static com.deadline.knunotice.member.EncryptionAlgorithm.BCRYPT;
+
 @Getter
 @Setter
 @Entity
@@ -30,7 +32,18 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Authority> authorities;
 
-    @OneToMany(mappedBy = "memberToNotice")
+    @OneToMany(mappedBy = "notice")
     private List<MemberToNotice> notices;
+
+    public Member() {
+
+    }
+
+    public Member(SignUpDTO signUpDTO){
+        this.username = signUpDTO.getUsername();
+        this.email = signUpDTO.getEmail();
+        this.password = signUpDTO.getPassword();
+        this.algorithm = BCRYPT;
+    }
 
 }

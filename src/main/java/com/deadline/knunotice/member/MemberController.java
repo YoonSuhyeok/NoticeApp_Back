@@ -4,10 +4,9 @@ import com.deadline.knunotice.config.jsonwebtoken.JwtTokenProviderService;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 
 @RestController
 @RequestMapping("/api/member")
@@ -62,6 +61,12 @@ public class MemberController {
         String newRefreshToken = tokenProvider.generateToken(memberAuthentication, 1);
 
         return new ResponseEntity<>(newRefreshToken, HttpStatus.OK);
+    }
+
+    @PostMapping("/validate")
+    public ResponseEntity<String> validate(@RequestBody TokenRequestDTO idToken) throws GeneralSecurityException, IOException {
+        memberService.save(idToken);
+        return new ResponseEntity<>("HELLO", HttpStatus.OK);
     }
 
 }
