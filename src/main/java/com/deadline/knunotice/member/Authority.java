@@ -4,8 +4,8 @@ import lombok.Getter;
 
 import javax.persistence.*;
 
-@Entity
 @Getter
+@Entity
 public class Authority {
 
     @Id
@@ -14,7 +14,7 @@ public class Authority {
 
     private String name;
 
-    @JoinColumn(name = "member")
+    @JoinColumn(name = "authorities")
     @ManyToOne
     private Member member;
 

@@ -59,6 +59,14 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    public MemberAuthentication signUp(SignUpDTO signUpDTO) {
+
+        Member member = new Member(signUpDTO);
+
+        return new MemberAuthentication(member);
+    }
+
+    @Override
     public Member findMemberByEmail(String email) {
         return memberRepository.findMemberByEmail(email).orElse(null);
     }

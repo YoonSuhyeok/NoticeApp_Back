@@ -19,10 +19,10 @@ public class Notice extends BasicEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 255, nullable = false)
+    @Column(nullable = false)
     private String title;
 
-    @Column(length = 255, nullable = false)
+    @Column(nullable = false)
     private String url;
 
     @Column(nullable = false)
@@ -31,7 +31,7 @@ public class Notice extends BasicEntity {
     @ManyToOne
     private Major major;
 
-    @OneToMany(mappedBy = "notice", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "member", fetch = FetchType.EAGER)
     private List<MemberToNotice> notices;
 
     public NoticeResponseDTO toDto() {

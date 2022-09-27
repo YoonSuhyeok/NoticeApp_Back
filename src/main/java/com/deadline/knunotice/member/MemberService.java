@@ -8,6 +8,8 @@ public interface MemberService {
 
     Member signUp(String email);
 
+    MemberAuthentication signUp(SignUpDTO signUpDTO);
+
     Member findMemberByEmail(String email);
 
 }

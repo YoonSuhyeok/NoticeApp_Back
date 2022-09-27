@@ -17,15 +17,39 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    public MemberController(JwtTokenProviderService tokenProvider, MemberService memberService) {
+    private final JwtTokenProviderService jwtTokenProviderService;
+
+    public MemberController(JwtTokenProviderService tokenProvider, MemberService memberService, JwtTokenProviderService jwtTokenProviderService) {
         this.tokenProvider = tokenProvider;
         this.memberService = memberService;
+        this.jwtTokenProviderService = jwtTokenProviderService;
     }
 
     @GetMapping("")
     public ResponseEntity<Member> findMemberByUsername(@Param("username") String username) {
         Member member = memberService.findMemberByUsername(username);
         return new ResponseEntity<>(member, HttpStatus.OK);
+    }
+
+    @PostMapping("/signIn")
+    public ResponseEntity<TokenResponseDTO> login(@RequestBody LoginRequestDTO loginRequestDTO) {
+        Member member = memberService.findMemberByEmail(loginRequestDTO.email);
+        MemberAuthentication memberAuthentication = new MemberAuthentication(member);
+        String accessToken = jwtTokenProviderService.generateToken(memberAuthentication, 0);
+        String refreshToken = jwtTokenProviderService.generateToken(memberAuthentication, 1);
+
+        return new ResponseEntity<>(new TokenResponseDTO(accessToken, refreshToken), HttpStatus.OK);
+    }
+
+    @PostMapping("/signUp")
+    public ResponseEntity<TokenResponseDTO> signUp(@RequestBody SignUpDTO signUpDTO) {
+        MemberAuthentication member = memberService.signUp(signUpDTO);
+
+        String accessToken = jwtTokenProviderService.generateToken(member, 0);
+        String refreshToken = jwtTokenProviderService.generateToken(member, 1);
+
+        TokenResponseDTO tokenResponseDTO = new TokenResponseDTO(accessToken, refreshToken);
+        return new ResponseEntity<>(tokenResponseDTO, HttpStatus.OK);
     }
 
     @GetMapping("/refresh")
