@@ -20,5 +20,5 @@ public interface NoticeService {
     Page<NoticeAndETC> findAllVersionSQLAndMajor(Long id, String keyword, ArrayList<MajorResponseDTO> majors, Pageable pageable);
 
     Page<NoticeAndETC> findAllForMajors(ArrayList<MajorResponseDTO> majors, Pageable pageable);
-    
+
 }
