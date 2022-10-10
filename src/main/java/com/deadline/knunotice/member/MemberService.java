@@ -15,6 +15,6 @@ public interface MemberService {
 
     Member findMemberByEmail(String email);
 
-    void save(TokenRequestDTO idToken) throws GeneralSecurityException, IOException;
+    Member save(TokenRequestDTO idToken) throws GeneralSecurityException, IOException;
 
 }

@@ -64,9 +64,19 @@ public class MemberController {
     }
 
     @PostMapping("/validate")
-    public ResponseEntity<String> validate(@RequestBody TokenRequestDTO idToken) throws GeneralSecurityException, IOException {
-        memberService.save(idToken);
-        return new ResponseEntity<>("HELLO", HttpStatus.OK);
+    public ResponseEntity<?> validate(@RequestBody TokenRequestDTO idToken) throws GeneralSecurityException, IOException {
+        Member member = memberService.save(idToken);
+        if(member == null) {
+            return new ResponseEntity<>("Not validate", HttpStatus.FORBIDDEN);
+        }
+
+        MemberAuthentication memberAuthentication = new MemberAuthentication(member);
+
+        String accessToken = jwtTokenProviderService.generateToken(memberAuthentication, 0);
+        String refreshToken = jwtTokenProviderService.generateToken(memberAuthentication, 1);
+
+        TokenResponseDTO tokenResponseDTO = new TokenResponseDTO(accessToken, refreshToken);
+        return new ResponseEntity<>(tokenResponseDTO, HttpStatus.OK);
     }
 
 }

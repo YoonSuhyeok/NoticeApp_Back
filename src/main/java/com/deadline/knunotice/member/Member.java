@@ -1,7 +1,6 @@
 package com.deadline.knunotice.member;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,6 +10,8 @@ import static com.deadline.knunotice.member.EncryptionAlgorithm.BCRYPT;
 @Getter
 @Setter
 @Entity
+@Builder
+@AllArgsConstructor
 public class Member {
 
     @Id

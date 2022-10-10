@@ -19,7 +19,7 @@ import java.util.function.Supplier;
 @Transactional
 public class MemberServiceImpl implements MemberService {
 
-    @Value("${spring.security.oauth2.client.registration.google.client-id}")
+    @Value("${google_client_id")
     private String googleClientId;
 
     private final MemberRepository memberRepository;
@@ -82,7 +82,8 @@ public class MemberServiceImpl implements MemberService {
         return memberRepository.findMemberByEmail(email).orElse(null);
     }
 
-    public void save(TokenRequestDTO idTokenString) throws GeneralSecurityException, IOException {
+    @Override
+    public Member save(TokenRequestDTO idTokenString) throws GeneralSecurityException, IOException {
         //// Specify the CLIENT_ID of the app that accesses the backend:
         // Or, if multiple clients access the backend:
         //.setAudience(Arrays.asList(CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3))
@@ -109,11 +110,19 @@ public class MemberServiceImpl implements MemberService {
             String familyName = (String) payload.get("family_name");
             String givenName = (String) payload.get("given_name");
 
-            // Use or store profile information
-            // ...
+            Member member = memberRepository.findMemberByEmail(email).orElse(null);
+            if(member == null) {
+                member = Member.builder()
+                        .email(email)
+                        .build();
+                memberRepository.save(member);
+            }
+
+            return member;
 
         } else {
             System.out.println("Invalid ID token.");
+            return null;
         }
     }
 }
