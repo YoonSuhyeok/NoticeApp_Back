@@ -1,9 +1,8 @@
 package com.deadline.knunotice.notice;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class NoticeServiceImpl implements NoticeService {
@@ -15,15 +14,16 @@ public class NoticeServiceImpl implements NoticeService {
     }
 
     @Override
-    public List<NoticeResponseDTO> findAll() {
-        List<Notice> notices = noticeRepository.findAll();
+    public Page<NoticeResponseDTO> findAll(Pageable pageable) {
+        // TODO 생성일 기준 정렬 필요
+        Page<Notice> notices = noticeRepository.findAll(pageable);
+        return NoticeResponseDTO.builder().build().toDtoPage(notices);
+    }
 
-        List<NoticeResponseDTO> noticeResponseDTOS = new ArrayList<>();
-        for(Notice notice: notices) {
-            noticeResponseDTOS.add(notice.toDto());
-        }
-
-        return noticeResponseDTOS;
+    @Override
+    public Page<NoticeResponseDTO> searchAll(String keyword, Pageable pageable) {
+        Page<Notice> notices = noticeRepository.findAllByTitleContainingOrderByCreatedDate(keyword, pageable);
+        return NoticeResponseDTO.builder().build().toDtoPage(notices);
     }
 
 }

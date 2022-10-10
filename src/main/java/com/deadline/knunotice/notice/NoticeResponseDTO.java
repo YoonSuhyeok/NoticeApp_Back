@@ -3,6 +3,7 @@ package com.deadline.knunotice.notice;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.domain.Page;
 
 import java.util.Date;
 
@@ -22,5 +23,9 @@ public class NoticeResponseDTO {
     private Boolean isPin;
 
     private Boolean isBookmark;
+
+    public Page<NoticeResponseDTO> toDtoPage(Page<Notice> notices) {
+        return notices.map(Notice::toDto );
+    }
 
 }
