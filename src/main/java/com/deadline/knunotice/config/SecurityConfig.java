@@ -48,6 +48,8 @@ public class SecurityConfig {
                 .antMatchers("/api/member/validate").permitAll()
                 .antMatchers("/api/notice").permitAll()
                 .antMatchers("/api/notice/search").permitAll()
+                .antMatchers("/api/college").permitAll()
+                .antMatchers("/api/major").permitAll()
                 .anyRequest()
                 .authenticated()
             .and()
