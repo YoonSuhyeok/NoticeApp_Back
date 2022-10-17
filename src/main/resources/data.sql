@@ -60,79 +60,78 @@ insert into major(id, name, college_id) values (32, "스포츠과학과", 5);
 insert into major(id, name, college_id) values (33, "산업공학전공", 5);
 insert into major(id, name, college_id) values (34, "에너지자원공학전공", 5);
 
-insert into major(id, name, college_id) values (33, "영상문화학과", 5);
-insert into major(id, name, college_id) values (34, "음학학과", 5);
+insert into major(id, name, college_id) values (35, "영상문화학과", 5);
+insert into major(id, name, college_id) values (36, "음학학과", 5);
 
-insert into major(id, name, college_id) values (35, "화공·생물공학부", 5);
-insert into major(id, name, college_id) values (36, "생물공학전공", 5);
-insert into major(id, name, college_id) values (37, "화학공학전공", 5);
+insert into major(id, name, college_id) values (37, "화공·생물공학부", 5);
+insert into major(id, name, college_id) values (38, "생물공학전공", 5);
+insert into major(id, name, college_id) values (39, "화학공학전공", 5);
 
-insert into major(id, name, college_id) values (38, "가정교육과", 6);
-insert into major(id, name, college_id) values (39, "과학교육학부", 6);
-insert into major(id, name, college_id) values (40, "교육학과", 6);
-insert into major(id, name, college_id) values (38, "국어교육과", 6);
-insert into major(id, name, college_id) values (39, "수학교육과", 6);
-insert into major(id, name, college_id) values (40, "역사교육과", 6);
+insert into major(id, name, college_id) values (40, "가정교육과", 6);
+insert into major(id, name, college_id) values (41, "과학교육학부", 6);
+insert into major(id, name, college_id) values (42, "교육학과", 6);
+insert into major(id, name, college_id) values (43, "국어교육과", 6);
+insert into major(id, name, college_id) values (44, "수학교육과", 6);
+insert into major(id, name, college_id) values (45, "역사교육과", 6);
 
-insert into major(id, name, college_id) values (41, "영어교육과", 6);
-insert into major(id, name, college_id) values (42, "윤리교육과", 6);
-insert into major(id, name, college_id) values (43, "일반사회교육과", 6);
-insert into major(id, name, college_id) values (44, "지리교육과", 6);
-insert into major(id, name, college_id) values (45, "체육교육과", 6);
-insert into major(id, name, college_id) values (46, "한문교육과", 6);
+insert into major(id, name, college_id) values (46, "영어교육과", 6);
+insert into major(id, name, college_id) values (47, "윤리교육과", 6);
+insert into major(id, name, college_id) values (48, "일반사회교육과", 6);
+insert into major(id, name, college_id) values (49, "지리교육과", 6);
+insert into major(id, name, college_id) values (50, "체육교육과", 6);
+insert into major(id, name, college_id) values (51, "한문교육과", 6);
 
-insert into major(id, name, college_id) values (47, "문화인류학과", 7);
-insert into major(id, name, college_id) values (48, "부동산학과", 7);
-insert into major(id, name, college_id) values (49, "사회학과", 7);
-insert into major(id, name, college_id) values (50, "미디어커뮤니케이션학과", 7);
-insert into major(id, name, college_id) values (51, "정치외교학과", 7);
-insert into major(id, name, college_id) values (52, "심리학전공", 7);
-insert into major(id, name, college_id) values (53, "행정학전공", 7);
+insert into major(id, name, college_id) values (52, "문화인류학과", 7);
+insert into major(id, name, college_id) values (53, "부동산학과", 7);
+insert into major(id, name, college_id) values (54, "사회학과", 7);
+insert into major(id, name, college_id) values (55, "미디어커뮤니케이션학과", 7);
+insert into major(id, name, college_id) values (56, "정치외교학과", 7);
+insert into major(id, name, college_id) values (57, "심리학전공", 7);
+insert into major(id, name, college_id) values (58, "행정학전공", 7);
 
-insert into major(id, name, college_id) values (47, "산림경학전공", 8);
-insert into major(id, name, college_id) values (48, "산림자원학전공", 8);
-insert into major(id, name, college_id) values (49, "산림환경보호학전공", 8);
-insert into major(id, name, college_id) values (50, "목재과학전공", 8);
-insert into major(id, name, college_id) values (51, "종이소재과학전공", 8);
-insert into major(id, name, college_id) values (52, "생태조경디자인학과", 8);
+insert into major(id, name, college_id) values (59, "산림경학전공", 8);
+insert into major(id, name, college_id) values (60, "산림자원학전공", 8);
+insert into major(id, name, college_id) values (61, "산림환경보호학전공", 8);
+insert into major(id, name, college_id) values (62, "목재과학전공", 8);
+insert into major(id, name, college_id) values (63, "종이소재과학전공", 8);
+insert into major(id, name, college_id) values (64, "생태조경디자인학과", 8);
 
-insert into major(id, name, college_id) values (53, "수의예과", 9);
-insert into major(id, name, college_id) values (54, "수의학과", 9);
+insert into major(id, name, college_id) values (65, "수의예과", 9);
+insert into major(id, name, college_id) values (66, "수의학과", 9);
 
-insert into major(id, name, college_id) values (55, "약학과", 10);
+insert into major(id, name, college_id) values (67, "약학과", 10);
 
-insert into major(id, name, college_id) values (55, "의예과", 11);
+insert into major(id, name, college_id) values (68, "의예과", 11);
 
-insert into major(id, name, college_id) values (56, "분자생명과학과", 12);
-insert into major(id, name, college_id) values (57, "생명건강공학과", 12);
-insert into major(id, name, college_id) values (58, "생물의소재공학과", 12);
-insert into major(id, name, college_id) values (59, "의생명융합부", 12);
-insert into major(id, name, college_id) values (60, "시스템면역과학전공", 12);
-insert into major(id, name, college_id) values (61, "의생명공학전공", 12);
+insert into major(id, name, college_id) values (69, "분자생명과학과", 12);
+insert into major(id, name, college_id) values (70, "생명건강공학과", 12);
+insert into major(id, name, college_id) values (71, "생물의소재공학과", 12);
+insert into major(id, name, college_id) values (72, "의생명융합부", 12);
+insert into major(id, name, college_id) values (73, "시스템면역과학전공", 12);
+insert into major(id, name, college_id) values (74, "의생명공학전공", 12);
 
+insert into major(id, name, college_id) values (75, "국어국문학전공", 13);
+insert into major(id, name, college_id) values (76, "독어독문학전공", 13);
+insert into major(id, name, college_id) values (77, "불어불문학전공", 13);
+insert into major(id, name, college_id) values (78, "사회전공", 13);
+insert into major(id, name, college_id) values (79, "영어영문학전공", 13);
+insert into major(id, name, college_id) values (80, "일본학전공", 13);
+insert into major(id, name, college_id) values (81, "중어중문학전공", 13);
+insert into major(id, name, college_id) values (82, "철학전공", 13);
 
-insert into major(id, name, college_id) values (62, "국어국문학전공", 13);
-insert into major(id, name, college_id) values (63, "독어독문학전공", 13);
-insert into major(id, name, college_id) values (64, "불어불문학전공", 13);
-insert into major(id, name, college_id) values (65, "사회전공", 13);
-insert into major(id, name, college_id) values (66, "영어영문학전공", 13);
-insert into major(id, name, college_id) values (67, "일본학전공", 13);
-insert into major(id, name, college_id) values (68, "중어중문학전공", 13);
-insert into major(id, name, college_id) values (69, "철학전공", 13);
+insert into major(id, name, college_id) values (83, "물리학과", 14);
+insert into major(id, name, college_id) values (84, "생명과학과", 14);
+insert into major(id, name, college_id) values (85, "수학과", 14);
+insert into major(id, name, college_id) values (86, "지구물리학전공", 14);
+insert into major(id, name, college_id) values (87, "지질학전공", 14);
+insert into major(id, name, college_id) values (88, "생화학전공", 14);
+insert into major(id, name, college_id) values (89, "화학전공", 14);
 
-insert into major(id, name, college_id) values (70, "물리학과", 14);
-insert into major(id, name, college_id) values (71, "생명과학과", 14);
-insert into major(id, name, college_id) values (72, "수학과", 14);
-insert into major(id, name, college_id) values (73, "지구물리학전공", 14);
-insert into major(id, name, college_id) values (74, "지질학전공", 14);
-insert into major(id, name, college_id) values (75, "생화학전공", 14);
-insert into major(id, name, college_id) values (76, "화학전공", 14);
+insert into major(id, name, college_id) values (90, "전기전자공학과", 15);
+insert into major(id, name, college_id) values (91, "전자공학과", 15);
+insert into major(id, name, college_id) values (92, "컴퓨터공학과", 15);
+insert into major(id, name, college_id) values (93, "AI융합학과", 15);
 
-insert into major(id, name, college_id) values (77, "전기전자공학과", 15);
-insert into major(id, name, college_id) values (78, "전자공학과", 15);
-insert into major(id, name, college_id) values (79, "컴퓨터공학과", 15);
-insert into major(id, name, college_id) values (80, "AI융합학과", 15);
-
-insert into major(id, name, college_id) values (81, "미래융합가상학과", 16);
-insert into major(id, name, college_id) values (82, "춘천자유전공학부", 17);
-insert into major(id, name, college_id) values (83, "연계전공", 18);
+insert into major(id, name, college_id) values (94, "미래융합가상학과", 16);
+insert into major(id, name, college_id) values (95, "춘천자유전공학부", 17);
+insert into major(id, name, college_id) values (96, "연계전공", 18);
