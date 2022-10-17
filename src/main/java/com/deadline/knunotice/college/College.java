@@ -32,7 +32,7 @@ public class College extends BasicEntity {
     public CollegeResponseDTO toDto() {
         List<MajorResponseDTO> majorResponseDTOS = new ArrayList<>();
         for (Major major : majors) {
-            MajorResponseDTO majorResponseDTO = MajorResponseDTO.builder().name(major.getName()).build();
+            MajorResponseDTO majorResponseDTO = MajorResponseDTO.builder().id(major.getId()).name(major.getName()).build();
             majorResponseDTOS.add(majorResponseDTO);
         }
 

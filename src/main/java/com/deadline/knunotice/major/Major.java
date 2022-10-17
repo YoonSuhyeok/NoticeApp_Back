@@ -31,6 +31,7 @@ public class Major extends BasicEntity {
 
     public MajorResponseDTO toDto() {
         return MajorResponseDTO.builder()
+                .id(id)
                 .name(name)
                 .build();
     }
