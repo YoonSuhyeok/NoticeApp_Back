@@ -3,8 +3,8 @@ package com.deadline.knunotice.notice;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.domain.Page;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -24,8 +24,10 @@ public class NoticeResponseDTO {
 
     private Boolean isBookmark;
 
-    public Page<NoticeResponseDTO> toDtoPage(Page<Notice> notices) {
-        return notices.map(Notice::toDto );
-    }
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
+
+    private String majorName;
 
 }
