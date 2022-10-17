@@ -56,4 +56,6 @@ public class MemberAuthentication implements Authentication {
 
     public String getEmail() { return member.getEmail(); }
 
+    public Member getMember() { return member; }
+
 }
