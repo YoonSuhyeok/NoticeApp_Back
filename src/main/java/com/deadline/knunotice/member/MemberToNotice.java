@@ -1,10 +1,16 @@
 package com.deadline.knunotice.member;
 
 import com.deadline.knunotice.notice.Notice;
+import lombok.*;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class MemberToNotice {
 
     @Id
