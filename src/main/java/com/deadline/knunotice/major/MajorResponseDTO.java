@@ -8,5 +8,9 @@ import lombok.Setter;
 @Setter
 @Builder
 public class MajorResponseDTO {
+
+    private Long id;
+
     private String name;
+
 }
