@@ -115,7 +115,7 @@ public class MemberServiceImpl implements MemberService {
                 member = Member.builder()
                         .email(email)
                         .build();
-                memberRepository.save(member);
+                member = memberRepository.save(member);
             }
 
             return member;
