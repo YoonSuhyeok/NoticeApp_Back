@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/notice")
@@ -60,11 +61,18 @@ public class NoticeController {
     }
 
     @PostMapping("/record")
-    public ResponseEntity<Integer> recodePin(MemberAuthentication memberAuthentication,
+    public ResponseEntity<Integer> recordPinOrBookmark(MemberAuthentication memberAuthentication,
                                        @Param("noticeId") Long noticeId, @Param("type") Integer type) {
 
-        Integer result = noticeService.recodePinOrBookmark(memberAuthentication.getMember(), noticeId, type);
+        Integer result = noticeService.recordPinOrBookmark(memberAuthentication.getMember(), noticeId, type);
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
+    @GetMapping("/bookmark")
+    public ResponseEntity<List<NoticeResponseDTO>> findBookmarkAll(MemberAuthentication memberAuthentication, @PageableDefault(size=20) Pageable pageable) {
+        List<NoticeResponseDTO> notices = noticeService.findBookmarkAll(memberAuthentication, pageable);
+        return new ResponseEntity<>(notices, HttpStatus.OK);
+    }
+
 }

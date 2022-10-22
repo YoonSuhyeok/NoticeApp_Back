@@ -2,6 +2,7 @@ package com.deadline.knunotice.notice;
 
 import com.deadline.knunotice.major.MajorResponseDTO;
 import com.deadline.knunotice.member.Member;
+import com.deadline.knunotice.member.MemberAuthentication;
 import com.deadline.knunotice.member.MemberToNotice;
 import com.deadline.knunotice.member.MemberToNoticeRepository;
 import org.springframework.data.domain.Page;
@@ -75,7 +76,34 @@ public class NoticeServiceImpl implements NoticeService {
     }
 
     @Override
-    public Integer recodePinOrBookmark(Member member, Long noticeId, Integer type) {
+    public List<NoticeResponseDTO> findBookmarkAll(MemberAuthentication memberAuthentication, Pageable pageable) {
+        Page<MemberToNotice> pages = mtnRepository.findMemberToNoticeByMember(memberAuthentication.getMember(), pageable);
+
+        List<NoticeResponseDTO> notices = new ArrayList<>();
+
+        List<MemberToNotice> mtns = pages.getContent();
+
+        for(MemberToNotice mtn: mtns) {
+
+            notices.add(new NoticeResponseDTO(
+                    mtn.getNotice().getId(),
+                    mtn.getNotice().getTitle(),
+                    mtn.getNotice().getUrl(),
+                    mtn.getNotice().getCreatedDate(),
+                    mtn.isBookmark(),
+                    mtn.isPin(),
+                    mtn.getNotice().getCreatedAt(),
+                    mtn.getNotice().getUpdatedAt(),
+                    mtn.getNotice().getMajor().getName()
+            ));
+
+        }
+
+        return notices;
+    }
+
+    @Override
+    public Integer recordPinOrBookmark(Member member, Long noticeId, Integer type) {
 
         Notice notice = noticeRepository.findById(noticeId).orElseThrow();
 
