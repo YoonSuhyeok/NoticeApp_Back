@@ -18,16 +18,16 @@ public class NoticeResponseDTO {
 
     private String url;
 
-    private Date createdDate;
+    private Date created_date;
 
-    private Boolean isPin;
+    private Integer is_pin;
 
-    private Boolean isBookmark;
+    private Integer is_bookmark;
 
-    private LocalDateTime createdAt;
+    private LocalDateTime created_at;
 
-    private LocalDateTime updatedAt;
+    private LocalDateTime updated_at;
 
-    private String majorName;
+    private String major_name;
 
 }

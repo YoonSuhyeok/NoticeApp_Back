@@ -76,8 +76,8 @@ public class NoticeServiceImpl implements NoticeService {
     }
 
     @Override
-    public List<NoticeResponseDTO> findBookmarkAll(MemberAuthentication memberAuthentication, Pageable pageable) {
-        Page<MemberToNotice> pages = mtnRepository.findMemberToNoticeByMember(memberAuthentication.getMember(), pageable);
+    public PageNoticeResponse findBookmarkAll(MemberAuthentication memberAuthentication, Pageable pageable) {
+        Page<MemberToNotice> pages = mtnRepository.findMemberToNoticeByMemberAndIsBookmark(memberAuthentication.getMember(), true, pageable);
 
         List<NoticeResponseDTO> notices = new ArrayList<>();
 
@@ -85,13 +85,23 @@ public class NoticeServiceImpl implements NoticeService {
 
         for(MemberToNotice mtn: mtns) {
 
+            int isPin = 0;
+            if(mtn.isPin()) {
+                isPin = 1;
+            }
+
+            int isBookmark = 0;
+            if(mtn.isBookmark()) {
+                isBookmark = 1;
+            }
+
             notices.add(new NoticeResponseDTO(
                     mtn.getNotice().getId(),
                     mtn.getNotice().getTitle(),
                     mtn.getNotice().getUrl(),
                     mtn.getNotice().getCreatedDate(),
-                    mtn.isBookmark(),
-                    mtn.isPin(),
+                    isPin,
+                    isBookmark,
                     mtn.getNotice().getCreatedAt(),
                     mtn.getNotice().getUpdatedAt(),
                     mtn.getNotice().getMajor().getName()
@@ -99,7 +109,12 @@ public class NoticeServiceImpl implements NoticeService {
 
         }
 
-        return notices;
+        PageNoticeResponse pageNoticeResponse = new PageNoticeResponse();
+        pageNoticeResponse.setContent(notices);
+        pageNoticeResponse.setNumber(pages.getNumber());
+        pageNoticeResponse.setTotalPages(pages.getTotalPages());
+
+        return pageNoticeResponse;
     }
 
     @Override

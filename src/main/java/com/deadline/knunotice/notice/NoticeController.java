@@ -70,8 +70,8 @@ public class NoticeController {
     }
 
     @GetMapping("/bookmark")
-    public ResponseEntity<List<NoticeResponseDTO>> findBookmarkAll(MemberAuthentication memberAuthentication, @PageableDefault(size=20) Pageable pageable) {
-        List<NoticeResponseDTO> notices = noticeService.findBookmarkAll(memberAuthentication, pageable);
+    public ResponseEntity<PageNoticeResponse> findBookmarkAll(MemberAuthentication memberAuthentication, @PageableDefault(size=20) Pageable pageable) {
+        PageNoticeResponse notices = noticeService.findBookmarkAll(memberAuthentication, pageable);
         return new ResponseEntity<>(notices, HttpStatus.OK);
     }
 
