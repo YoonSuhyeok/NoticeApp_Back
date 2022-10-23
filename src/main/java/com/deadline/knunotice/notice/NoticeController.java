@@ -1,5 +1,6 @@
 package com.deadline.knunotice.notice;
 
+import com.deadline.knunotice.config.aop.LogExecutionTime;
 import com.deadline.knunotice.major.MajorResponseDTO;
 import com.deadline.knunotice.member.MemberAuthentication;
 import org.springframework.data.domain.Page;
@@ -11,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/notice")
@@ -23,12 +23,14 @@ public class NoticeController {
         this.noticeService = noticeService;
     }
 
+    @LogExecutionTime
     @GetMapping()
     public ResponseEntity<Page<NoticeAndETC>> noticeFindAll(@PageableDefault(size=20) Pageable pageable){
         Page<NoticeAndETC> notices = noticeService.findAll(pageable);
         return new ResponseEntity<>(notices, HttpStatus.OK);
     }
 
+    @LogExecutionTime
     @PostMapping("/search")
     public ResponseEntity<?> searchAll(MemberAuthentication memberAuthentication, @Param("keyword") String keyword, @PageableDefault(size=20) Pageable pageable, @RequestBody ArrayList<MajorResponseDTO> majors)
     {
@@ -60,6 +62,7 @@ public class NoticeController {
         return new ResponseEntity<>(notices, HttpStatus.OK);
     }
 
+    @LogExecutionTime
     @PostMapping("/record")
     public ResponseEntity<Integer> recordPinOrBookmark(MemberAuthentication memberAuthentication,
                                        @Param("noticeId") Long noticeId, @Param("type") Integer type) {
@@ -69,6 +72,7 @@ public class NoticeController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    @LogExecutionTime
     @GetMapping("/bookmark")
     public ResponseEntity<PageNoticeResponse> findBookmarkAll(MemberAuthentication memberAuthentication, @PageableDefault(size=20) Pageable pageable) {
         PageNoticeResponse notices = noticeService.findBookmarkAll(memberAuthentication, pageable);

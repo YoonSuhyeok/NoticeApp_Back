@@ -1,5 +1,6 @@
 package com.deadline.knunotice.major;
 
+import com.deadline.knunotice.config.aop.LogExecutionTime;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ public class MajorController {
         this.majorService = majorService;
     }
 
+    @LogExecutionTime
     @GetMapping()
     public ResponseEntity<List<MajorResponseDTO>> getMajors() {
 
@@ -25,4 +27,5 @@ public class MajorController {
 
         return new ResponseEntity<>(majorResponseDTOS, HttpStatus.OK);
     }
+
 }

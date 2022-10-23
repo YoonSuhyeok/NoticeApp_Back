@@ -1,5 +1,6 @@
 package com.deadline.knunotice.college;
 
+import com.deadline.knunotice.config.aop.LogExecutionTime;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ public class CollegeController {
         this.collegeService = collegeService;
     }
 
+    @LogExecutionTime
     @GetMapping()
     public ResponseEntity<List<CollegeResponseDTO>> findAll() {
         List<CollegeResponseDTO> colleges = collegeService.findAll();

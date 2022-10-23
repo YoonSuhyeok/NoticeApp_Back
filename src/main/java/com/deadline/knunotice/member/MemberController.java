@@ -1,5 +1,6 @@
 package com.deadline.knunotice.member;
 
+import com.deadline.knunotice.config.aop.LogExecutionTime;
 import com.deadline.knunotice.config.jsonwebtoken.JwtTokenProviderService;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
@@ -24,12 +25,14 @@ public class MemberController {
         this.jwtTokenProviderService = jwtTokenProviderService;
     }
 
+    @LogExecutionTime
     @GetMapping("")
     public ResponseEntity<Member> findMemberByUsername(@Param("username") String username) {
         Member member = memberService.findMemberByUsername(username);
         return new ResponseEntity<>(member, HttpStatus.OK);
     }
 
+    @LogExecutionTime
     @PostMapping("/signIn")
     public ResponseEntity<TokenResponseDTO> login(@RequestBody LoginRequestDTO loginRequestDTO) {
         Member member = memberService.findMemberByEmail(loginRequestDTO.email);
@@ -40,6 +43,7 @@ public class MemberController {
         return new ResponseEntity<>(new TokenResponseDTO(accessToken, refreshToken), HttpStatus.OK);
     }
 
+    @LogExecutionTime
     @PostMapping("/signUp")
     public ResponseEntity<TokenResponseDTO> signUp(@RequestBody SignUpDTO signUpDTO) {
         MemberAuthentication member = memberService.signUp(signUpDTO);
@@ -51,6 +55,7 @@ public class MemberController {
         return new ResponseEntity<>(tokenResponseDTO, HttpStatus.OK);
     }
 
+    @LogExecutionTime
     @GetMapping("/refresh")
     public ResponseEntity<String> generateRefreshToken(@RequestParam("email") String email, @RequestParam("refreshToken") String refreshToken) {
         if(!tokenProvider.validateToken(refreshToken, 1)) {
@@ -63,6 +68,7 @@ public class MemberController {
         return new ResponseEntity<>(newRefreshToken, HttpStatus.OK);
     }
 
+    @LogExecutionTime
     @PostMapping("/validate")
     public ResponseEntity<?> validate(@RequestBody TokenRequestDTO idToken) throws GeneralSecurityException, IOException {
         Member member = memberService.save(idToken);
