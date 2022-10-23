@@ -13,6 +13,6 @@ public interface MemberToNoticeRepository extends JpaRepository<MemberToNotice, 
 
     Optional<MemberToNotice> findMemberToNoticeByMemberAndNotice(Member member, Notice notice);
 
-    Page<MemberToNotice> findMemberToNoticeByMember(Member member, Pageable pageable);
+    Page<MemberToNotice> findMemberToNoticeByMemberAndIsBookmark(Member member, Boolean isBookmark, Pageable pageable);
 
 }
